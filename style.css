@@ -47,8 +47,9 @@ tfoot:last-child tr:last-child td:last-child { border-radius: 0 0 10px 0; }
 .theme-red footer { color: #666; }
 
 .theme-light body {background: #fff; color: #000;}
+.theme-light header {border-bottom:6px solid MediumSlateBlue!important}
 .theme-light .w3-border-red,.w3-hover-border-red:hover{border-color:MediumSlateBlue!important;}
-.theme-light .w3-codespan{color:MediumSlateBlue;background-color:#f1f1f1;}
+.theme-light .w3-codespan{color:MediumSlateBlue;background-color:#f1f1f1; }
 .theme-light .li-menu,ul li a { color: MediumSlateBlue; background: #fff; border: 1px solid #bdc5ee; }
 .theme-light .li-menu:hover,ul li a:hover{ background: #bdc5ee; }
 .theme-light .w3-h2 {color:MediumSlateBlue}
