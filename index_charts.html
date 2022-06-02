@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Enablement Charts</title>
+    <link rel="icon" sizes="32x32" href="favicon_32.png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body class="indexfile">
+<header>
+    <div class="content w3-bottombar w3-border-red w3-codespan">
+        <h1><img src="favicon_32.png" />   Enablement Charts</h1>
+    </div>
+</header>
+<main id="charts">
+    <br/>
+    <canvas id="myChartVelocity" style="width:100%;max-width:900px"></canvas>
+    <hr style="border-top: 3px solid #bbb;">
+    <canvas id="myChartThroughput" style="width:100%;max-width:900px"></canvas>
+    <hr style="border-top: 3px solid #bbb;">
+    <canvas id="myChartRework" style="width:100%;max-width:900px"></canvas>
+    <hr style="border-top: 3px solid #bbb;">
+    <canvas id="myChartHoursOld" style="width:100%;max-width:900px"></canvas>
+    <hr style="border-top: 3px solid #bbb;">
+    <canvas id="myChartHours" style="width:100%;max-width:900px"></canvas>
+    <script>
+        loadVelocity();
+        loadThroughput();
+        loadRework();
+        loadHours();
+        function loadVelocity() {
+            var xValues = ["Sprint 3", "Sprint 4", "Sprint 5", "Sprint 6", "Sprint 7"];
+            var yValues = [220, 348, 174, 105, 105];
+            var yValues2 = [13, 75, 64, 69, 69];
+            var barColors =  ["rgba(105,0,0,1)", "rgba(0,78,0,1)", "rgba(0,0,105,1)", "rgba(105,75,0,1)", "rgba(105,0,0,1)"];
+            var barColors2 = ["rgba(255,0,0,1)", "rgba(0,128,0,1)","rgba(0,0,255,1)", "rgba(255,165,0,1)", "rgba(255,0,0,1)"];
+            
+            new Chart("myChartVelocity", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                },{
+                backgroundColor: barColors2,
+                data: yValues2
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: true,
+                text: "Agile Velocity (SPs)"
+                }
+            }
+            });
+        }
+        function loadThroughput() {
+            var xValues = ["Sprint 3", "Sprint 4", "Sprint 5", "Sprint 6", "Sprint 7"];
+            var yValues = [15, 27, 14, 22, 22];
+            var yValues2 = [1, 6, 7, 14, 14];
+            var barColors =  ["rgba(105,0,0,1)", "rgba(0,78,0,1)", "rgba(0,0,105,1)", "rgba(105,75,0,1)", "rgba(105,0,0,1)"];
+            var barColors2 = ["rgba(255,0,0,1)", "rgba(0,128,0,1)","rgba(0,0,255,1)", "rgba(255,165,0,1)", "rgba(255,0,0,1)"];
+            
+            new Chart("myChartThroughput", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                },{
+                backgroundColor: barColors2,
+                data: yValues2
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: true,
+                text: "Throughput"
+                }
+            }
+            });
+        }
+        function loadRework() {
+            var xValues = ["Sprint 3", "Sprint 4", "Sprint 5", "Sprint 6", "Sprint 7"];
+            var yValues = [15, 15, 15, 15, 15];
+            var yValues2 = [14, 1, 2, 1, 1];
+            var barColors =  ["rgba(105,0,0,1)", "rgba(0,78,0,1)", "rgba(0,0,105,1)", "rgba(105,75,0,1)", "rgba(105,0,0,1)"];
+            var barColors2 = ["rgba(255,0,0,1)", "rgba(0,128,0,1)","rgba(0,0,255,1)", "rgba(255,165,0,1)", "rgba(255,0,0,1)"];
+            
+            new Chart("myChartRework", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                },{
+                backgroundColor: barColors2,
+                data: yValues2
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: true,
+                text: "Rework (%)"
+                }
+            }
+            });
+        }
+        function loadHours() {
+            var xValues = ["Rework", "Burn", "Build", "All Work"];
+            var yValues = [3, 202.08, 268.08, 268.08];
+            var barColors = ["rgba(255,0,0,1)", "rgba(0,128,0,1)","rgba(0,0,255,1)", "rgba(255,165,0,1)"];
+            
+            new Chart("myChartHoursOld", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: true,
+                text: "Hours Last Sprint Enablement (h)"
+                }
+            }
+            });
+
+            var xValues = ["Rework", "Burn", "Build", "All Work"];
+            var yValues = [3, 202.08, 0, 64];
+            var barColors = ["rgba(255,0,0,1)", "rgba(0,128,0,1)","rgba(0,0,255,1)", "rgba(255,165,0,1)"];
+            
+            new Chart("myChartHours", {
+                type: "doughnut",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                    }]
+                },
+                options: {
+                    title: {
+                    display: true,
+                    text: "Hours Last Sprint Enablement (h)"
+                    }
+                }
+                });
+        }
+        </script>
+</main>
+<footer>
+    <div class="content">
+        <p>
+            created at 2022-05-30 14:01:13
+        </p>
+    </div>
+</footer>
+</body>
+</html>
