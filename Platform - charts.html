@@ -18,35 +18,42 @@
     <table style="width:98%;">
         <tr>
             <td>
-                <div id="chartVelocity" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartVelocity" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartThroughput" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartThroughput" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartRework" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartRework" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartHoursPerSprint" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartHours" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartHours" style="width:100%;height:400px;max-width:1200px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHoursPerType" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
@@ -67,6 +74,7 @@
             loadThroughput();
             loadHoursPerSprint();
             loadHours();
+            loadHoursPerType();
         }
         function loadVelocity() {
             var velocityChartOptions = 
@@ -248,7 +256,7 @@
                         yValueFormatString: "#.# %",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 0.05860805860805861 },{ label: "Sprint 2022.2",  y: 0.05960541217142516 },{ label: "Sprint 2022.3",  y: 0.025806451612903226 },{ label: "Sprint 2022.4",  y: 0.04556962025316456 },{ label: "Sprint 2022.5",  y: 0.40540540540540543 },{ label: "Sprint 2022.6",  y: 0.2782608695652174 },
+                            { label: "Sprint 2022.1",  y: 0.05860805860805861 },{ label: "Sprint 2022.2",  y: 0.05960541217142516 },{ label: "Sprint 2022.3",  y: 0.025806451612903226 },{ label: "Sprint 2022.4",  y: 0.04556962025316456 },{ label: "Sprint 2022.5",  y: 0.40540540540540543 },{ label: "Sprint 2022.6",  y: 0.24615384615384617 },
                         ]
                     }
                 ]
@@ -289,7 +297,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 8.0 },{ label: "Sprint 2022.2",  y: 10.0 },{ label: "Sprint 2022.3",  y: 4.0 },{ label: "Sprint 2022.4",  y: 9.0 },{ label: "Sprint 2022.5",  y: 45.0 },{ label: "Sprint 2022.6",  y: 16.0 },
+                            { label: "Sprint 2022.1",  y: 8.0 },{ label: "Sprint 2022.2",  y: 10.0 },{ label: "Sprint 2022.3",  y: 4.0 },{ label: "Sprint 2022.4",  y: 9.0 },{ label: "Sprint 2022.5",  y: 45.0 },{ label: "Sprint 2022.6",  y: 24.0 },
                         ]
                     },
                     {
@@ -302,7 +310,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 144.5 },{ label: "Sprint 2022.2",  y: 177.77 },{ label: "Sprint 2022.3",  y: 159.0 },{ label: "Sprint 2022.4",  y: 206.5 },{ label: "Sprint 2022.5",  y: 156.0 },{ label: "Sprint 2022.6",  y: 73.5 },
+                            { label: "Sprint 2022.1",  y: 144.5 },{ label: "Sprint 2022.2",  y: 177.77 },{ label: "Sprint 2022.3",  y: 159.0 },{ label: "Sprint 2022.4",  y: 206.5 },{ label: "Sprint 2022.5",  y: 156.0 },{ label: "Sprint 2022.6",  y: 121.5 },
                         ]
                     },
                     {
@@ -314,7 +322,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 202.0 },{ label: "Sprint 2022.2",  y: 238.77 },{ label: "Sprint 2022.3",  y: 194.5 },{ label: "Sprint 2022.4",  y: 264.5 },{ label: "Sprint 2022.5",  y: 164.0 },{ label: "Sprint 2022.6",  y: 78.5 },
+                            { label: "Sprint 2022.1",  y: 202.0 },{ label: "Sprint 2022.2",  y: 238.77 },{ label: "Sprint 2022.3",  y: 194.5 },{ label: "Sprint 2022.4",  y: 264.5 },{ label: "Sprint 2022.5",  y: 164.0 },{ label: "Sprint 2022.6",  y: 139.5 },
                         ]
                     },
                     {
@@ -326,7 +334,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 202.0 },{ label: "Sprint 2022.2",  y: 243.27 },{ label: "Sprint 2022.3",  y: 194.5 },{ label: "Sprint 2022.4",  y: 264.5 },{ label: "Sprint 2022.5",  y: 164.0 },{ label: "Sprint 2022.6",  y: 78.5 },
+                            { label: "Sprint 2022.1",  y: 202.0 },{ label: "Sprint 2022.2",  y: 243.27 },{ label: "Sprint 2022.3",  y: 194.5 },{ label: "Sprint 2022.4",  y: 264.5 },{ label: "Sprint 2022.5",  y: 164.0 },{ label: "Sprint 2022.6",  y: 139.5 },
                         ]
                     },
                     {
@@ -365,7 +373,7 @@
                 exportEnabled: true,
                 animationEnabled: true,
                 title:{
-                    text: "Hours Last Sprint (h)"
+                    text: "Hours Last Sprint (h) - Platform - Sprint 2022.6"
                 }, 
                 toolTip: {
                     shared: true
@@ -383,15 +391,52 @@
 		                toolTipContent: "<b>{label}:</b> {y}h",
                         indexLabel: "{label}: {y}h (#percent%)",
                         dataPoints: [
-                            { label: "Rework",  y: 16.0 },
-                            { label: "Burn", y: 73.5 },
-                            { label: "Build", y: 78.5 },
-                            { label: "All Work",  y: 78.5 }
+                            { label: "Rework",  y: 24.0 },
+                            { label: "Burn", y: 121.5 },
+                            { label: "Build", y: 139.5 },
+                            { label: "All Work",  y: 139.5 }
                         ]
                     }
                 ]
             }
             var chart = new CanvasJS.Chart("chartHours", hoursChartOptions);
+            chart.render();
+        }
+        function loadHoursPerType() {
+            var hoursPerTypeChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Per Type - Platform - Sprint 2022.6"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Hours",
+                        showInLegend: false,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Imp",  y: 86.5 },{ label: "Test",  y: 6.0 },{ label: "Bug",  y: 24.0 },{ label: "Daily and Alignments",  y: 2.0 },{ label: "Block",  y: 17.0 },{ label: "Epic",  y: 3.0 },{ label: "Rituals",  y: 1.0 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHoursPerType", hoursPerTypeChartOptions);
             chart.render();
         }
         
@@ -408,7 +453,7 @@
 <footer><br/> <br/>
     <div class="content">
         <p>
-            created at 2022-06-13 10:17:57.819668
+            created at 2022-06-15 17:17:33.079982
         </p>
     </div>
 </footer>

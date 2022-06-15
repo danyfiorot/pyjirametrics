@@ -18,35 +18,42 @@
     <table style="width:98%;">
         <tr>
             <td>
-                <div id="chartVelocity" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartVelocity" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartThroughput" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartThroughput" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartRework" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartRework" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartHoursPerSprint" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartHours" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartHours" style="width:100%;height:400px;max-width:1200px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHoursPerType" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
@@ -67,6 +74,7 @@
             loadThroughput();
             loadHoursPerSprint();
             loadHours();
+            loadHoursPerType();
         }
         function loadVelocity() {
             var velocityChartOptions = 
@@ -350,7 +358,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 360 },{ label: "Sprint 2022.4",  y: 432 },{ label: "Sprint 2022.5",  y: 512 },{ label: "Sprint 2022.6",  y: 576 },{ label: "Sprint 2022.7",  y: 504 },{ label: "Sprint 2022.8",  y: 504 },
+                            { label: "Sprint 2022.3",  y: 360 },{ label: "Sprint 2022.4",  y: 432 },{ label: "Sprint 2022.5",  y: 512 },{ label: "Sprint 2022.6",  y: 576 },{ label: "Sprint 2022.7",  y: 504 },{ label: "Sprint 2022.8",  y: 432 },
                         ]
                     }
                 ]
@@ -365,7 +373,7 @@
                 exportEnabled: true,
                 animationEnabled: true,
                 title:{
-                    text: "Hours Last Sprint (h)"
+                    text: "Hours Last Sprint (h) - Enablement - Sprint 2022.8"
                 }, 
                 toolTip: {
                     shared: true
@@ -394,6 +402,43 @@
             var chart = new CanvasJS.Chart("chartHours", hoursChartOptions);
             chart.render();
         }
+        function loadHoursPerType() {
+            var hoursPerTypeChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Per Type - Enablement - Sprint 2022.8"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Hours",
+                        showInLegend: false,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Story",  y: 4.0 },{ label: "Imp",  y: 142.5 },{ label: "Non Functional Task",  y: 9.0 },{ label: "Daily and Alignments",  y: 26.5 },{ label: "Rituals",  y: 7.5 },{ label: "Tech Solution",  y: 16.5 },{ label: "Bug",  y: 1.0 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHoursPerType", hoursPerTypeChartOptions);
+            chart.render();
+        }
         
         function toggleDataSeries(e) {
             if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
@@ -408,7 +453,7 @@
 <footer><br/> <br/>
     <div class="content">
         <p>
-            created at 2022-06-13 10:13:10.375380
+            created at 2022-06-15 17:12:48.957845
         </p>
     </div>
 </footer>

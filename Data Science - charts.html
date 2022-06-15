@@ -18,35 +18,42 @@
     <table style="width:98%;">
         <tr>
             <td>
-                <div id="chartVelocity" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartVelocity" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartThroughput" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartThroughput" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartRework" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartRework" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartHoursPerSprint" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
                 <br/><br/>
             </td>
         </tr>
         <tr>
             <td>
                 <br/><br/>
-                <div id="chartHours" style="width:100%;height:400px;max-width:900px"></div>
+                <div id="chartHours" style="width:100%;height:400px;max-width:1200px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHoursPerType" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
         </tr>
@@ -67,6 +74,7 @@
             loadThroughput();
             loadHoursPerSprint();
             loadHours();
+            loadHoursPerType();
         }
         function loadVelocity() {
             var velocityChartOptions = 
@@ -99,7 +107,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 79 },{ label: "Cycle 6",  y: 426 },{ label: "Sprint 7",  y: 363 },
+                            { label: "Cycle 5",  y: 79 },{ label: "Cycle 6",  y: 426 },{ label: "Sprint 7",  y: 363 },{ label: "Sprint 8",  y: 301 },
                         ]
                     },
                     {
@@ -112,7 +120,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 138 },{ label: "Cycle 6",  y: 27 },{ label: "Sprint 7",  y: 166 },
+                            { label: "Cycle 5",  y: 138 },{ label: "Cycle 6",  y: 27 },{ label: "Sprint 7",  y: 166 },{ label: "Sprint 8",  y: 98 },
                         ]
                     },
                     {
@@ -129,7 +137,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 138.0 },{ label: "Cycle 6",  y: 82.5 },{ label: "Sprint 7",  y: 82.83333333333333 },
+                            { label: "Cycle 5",  y: 138.0 },{ label: "Cycle 6",  y: 82.5 },{ label: "Sprint 7",  y: 82.83333333333333 },{ label: "Sprint 8",  y: 45.20833333333333 },
                         ]
                     }
                 ]
@@ -165,7 +173,7 @@
                     yValueFormatString: "#,##0.#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Cycle 5",  y: 14 },{ label: "Cycle 6",  y: 11 },{ label: "Sprint 7",  y: 17 },
+                        { label: "Cycle 5",  y: 14 },{ label: "Cycle 6",  y: 11 },{ label: "Sprint 7",  y: 17 },{ label: "Sprint 8",  y: 16 },
                     ]
                 },
                 {
@@ -178,7 +186,7 @@
                     yValueFormatString: "#,##0.#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Cycle 5",  y: 20 },{ label: "Cycle 6",  y: 3 },{ label: "Sprint 7",  y: 10 },
+                        { label: "Cycle 5",  y: 20 },{ label: "Cycle 6",  y: 3 },{ label: "Sprint 7",  y: 10 },{ label: "Sprint 8",  y: 7 },
                     ]
                 },
                 {
@@ -195,7 +203,7 @@
                     yValueFormatString: "#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Cycle 5",  y: 20.0 },{ label: "Cycle 6",  y: 11.5 },{ label: "Sprint 7",  y: 7.166666666666667 },
+                        { label: "Cycle 5",  y: 20.0 },{ label: "Cycle 6",  y: 11.5 },{ label: "Sprint 7",  y: 7.166666666666667 },{ label: "Sprint 8",  y: 3.541666666666667 },
                     ]
                 }]
             });
@@ -235,7 +243,7 @@
                         yValueFormatString: "#.# %",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 0.15 },{ label: "Cycle 6",  y: 0.15 },{ label: "Sprint 7",  y: 0.15 },
+                            { label: "Cycle 5",  y: 0.15 },{ label: "Cycle 6",  y: 0.15 },{ label: "Sprint 7",  y: 0.15 },{ label: "Sprint 8",  y: 0.15 },
                         ]
                     },
                     {
@@ -248,7 +256,7 @@
                         yValueFormatString: "#.# %",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 0.0 },{ label: "Cycle 6",  y: 0.0 },{ label: "Sprint 7",  y: 0.08881157297198315 },
+                            { label: "Cycle 5",  y: 0.0 },{ label: "Cycle 6",  y: 0.0 },{ label: "Sprint 7",  y: 0.08881157297198315 },{ label: "Sprint 8",  y: 0.0010621348911311736 },
                         ]
                     }
                 ]
@@ -289,7 +297,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 0 },{ label: "Cycle 6",  y: 0 },{ label: "Sprint 7",  y: 48.5 },
+                            { label: "Cycle 5",  y: 0 },{ label: "Cycle 6",  y: 0 },{ label: "Sprint 7",  y: 48.5 },{ label: "Sprint 8",  y: 0.5 },
                         ]
                     },
                     {
@@ -302,7 +310,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 235.77 },{ label: "Cycle 6",  y: 576.72 },{ label: "Sprint 7",  y: 594.6 },
+                            { label: "Cycle 5",  y: 235.77 },{ label: "Cycle 6",  y: 576.72 },{ label: "Sprint 7",  y: 594.6 },{ label: "Sprint 8",  y: 471.25 },
                         ]
                     },
                     {
@@ -314,7 +322,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 253.47 },{ label: "Cycle 6",  y: 611.47 },{ label: "Sprint 7",  y: 639.6 },
+                            { label: "Cycle 5",  y: 253.47 },{ label: "Cycle 6",  y: 611.47 },{ label: "Sprint 7",  y: 639.6 },{ label: "Sprint 8",  y: 560.25 },
                         ]
                     },
                     {
@@ -326,7 +334,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 253.47 },{ label: "Cycle 6",  y: 616.47 },{ label: "Sprint 7",  y: 665.1 },
+                            { label: "Cycle 5",  y: 253.47 },{ label: "Cycle 6",  y: 616.47 },{ label: "Sprint 7",  y: 665.1 },{ label: "Sprint 8",  y: 570.75 },
                         ]
                     },
                     {
@@ -338,7 +346,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 175.0 },{ label: "Cycle 6",  y: 565.0 },{ label: "Sprint 7",  y: 630.0 },
+                            { label: "Cycle 5",  y: 175.0 },{ label: "Cycle 6",  y: 565.0 },{ label: "Sprint 7",  y: 630.0 },{ label: "Sprint 8",  y: 565.0 },
                         ]
                     },
                     {
@@ -350,7 +358,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Cycle 5",  y: 560 },{ label: "Cycle 6",  y: 1040 },{ label: "Sprint 7",  y: 1120 },
+                            { label: "Cycle 5",  y: 560 },{ label: "Cycle 6",  y: 1040 },{ label: "Sprint 7",  y: 1120 },{ label: "Sprint 8",  y: 1040 },
                         ]
                     }
                 ]
@@ -365,7 +373,7 @@
                 exportEnabled: true,
                 animationEnabled: true,
                 title:{
-                    text: "Hours Last Sprint (h)"
+                    text: "Hours Last Sprint (h) - [DataScience-COMs] Sprint 8"
                 }, 
                 toolTip: {
                     shared: true
@@ -383,15 +391,52 @@
 		                toolTipContent: "<b>{label}:</b> {y}h",
                         indexLabel: "{label}: {y}h (#percent%)",
                         dataPoints: [
-                            { label: "Rework",  y: 48.5 },
-                            { label: "Burn", y: 594.6 },
-                            { label: "Build", y: 639.6 },
-                            { label: "All Work",  y: 665.1 }
+                            { label: "Rework",  y: 0.5 },
+                            { label: "Burn", y: 471.25 },
+                            { label: "Build", y: 560.25 },
+                            { label: "All Work",  y: 570.75 }
                         ]
                     }
                 ]
             }
             var chart = new CanvasJS.Chart("chartHours", hoursChartOptions);
+            chart.render();
+        }
+        function loadHoursPerType() {
+            var hoursPerTypeChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Per Type - [DataScience-COMs] Sprint 8"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Hours",
+                        showInLegend: false,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Task",  y: 61.75 },{ label: "Imp",  y: 253.0 },{ label: "Requirement",  y: 52.5 },{ label: "Action Plan",  y: 5.25 },{ label: "Env and SCM",  y: 3.0 },{ label: "Test",  y: 1.5 },{ label: "Bug",  y: 0.5 },{ label: "Value Activation",  y: 10.5 },{ label: "Env",  y: 3.5 },{ label: "Story",  y: 7.0 },{ label: "Non Functional Task",  y: 0.5 },{ label: "Block",  y: 17.25 },{ label: "Daily and Alignments",  y: 70.25 },{ label: "Rituals",  y: 28.25 },{ label: "Training",  y: 21.0 },{ label: "Overhead CI&T",  y: 35.0 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHoursPerType", hoursPerTypeChartOptions);
             chart.render();
         }
         
@@ -408,7 +453,7 @@
 <footer><br/> <br/>
     <div class="content">
         <p>
-            created at 2022-06-13 10:45:05.440915
+            created at 2022-06-15 17:47:33.065900
         </p>
     </div>
 </footer>
