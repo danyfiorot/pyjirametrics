@@ -46,6 +46,13 @@
         <tr>
             <td>
                 <br/><br/>
+                <div id="chartCapacityHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
                 <div id="chartHours" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
@@ -69,10 +76,11 @@
                 "#EADB9A"                
                 ]);
 
-            loadRework();
             loadVelocity();
             loadThroughput();
+            loadRework();
             loadHoursPerSprint();
+            loadCapacityHoursPerSprint();
             loadHours();
             loadHoursPerType();
         }
@@ -107,7 +115,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 18 },{ label: "Sprint 2022.2",  y: 34 },{ label: "Sprint 2022.3",  y: 37 },{ label: "Sprint 2022.4",  y: 30 },{ label: "Sprint 2022.5",  y: 19 },{ label: "Sprint 2022.6",  y: 21 },
+                            { label: "Sprint 2022.2",  y: 34 },{ label: "Sprint 2022.3",  y: 37 },{ label: "Sprint 2022.4",  y: 30 },{ label: "Sprint 2022.5",  y: 19 },{ label: "Sprint 2022.6",  y: 21 },
                         ]
                     },
                     {
@@ -120,7 +128,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 77 },{ label: "Sprint 2022.2",  y: 32 },{ label: "Sprint 2022.3",  y: 45 },{ label: "Sprint 2022.4",  y: 27 },{ label: "Sprint 2022.5",  y: 26 },{ label: "Sprint 2022.6",  y: 27 },
+                            { label: "Sprint 2022.2",  y: 32 },{ label: "Sprint 2022.3",  y: 45 },{ label: "Sprint 2022.4",  y: 27 },{ label: "Sprint 2022.5",  y: 26 },{ label: "Sprint 2022.6",  y: 27 },
                         ]
                     },
                     {
@@ -137,7 +145,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 77.0 },{ label: "Sprint 2022.2",  y: 54.5 },{ label: "Sprint 2022.3",  y: 33.166666666666664 },{ label: "Sprint 2022.4",  y: 15.041666666666666 },{ label: "Sprint 2022.5",  y: 8.208333333333332 },{ label: "Sprint 2022.6",  y: 5.8680555555555545 },
+                            { label: "Sprint 2022.2",  y: 32.0 },{ label: "Sprint 2022.3",  y: 38.5 },{ label: "Sprint 2022.4",  y: 21.833333333333332 },{ label: "Sprint 2022.5",  y: 11.958333333333332 },{ label: "Sprint 2022.6",  y: 7.791666666666666 },
                         ]
                     }
                 ]
@@ -173,7 +181,7 @@
                     yValueFormatString: "#,##0.#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Sprint 2022.1",  y: 3 },{ label: "Sprint 2022.2",  y: 11 },{ label: "Sprint 2022.3",  y: 13 },{ label: "Sprint 2022.4",  y: 16 },{ label: "Sprint 2022.5",  y: 7 },{ label: "Sprint 2022.6",  y: 8 },
+                        { label: "Sprint 2022.2",  y: 11 },{ label: "Sprint 2022.3",  y: 13 },{ label: "Sprint 2022.4",  y: 16 },{ label: "Sprint 2022.5",  y: 7 },{ label: "Sprint 2022.6",  y: 8 },
                     ]
                 },
                 {
@@ -186,7 +194,7 @@
                     yValueFormatString: "#,##0.#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Sprint 2022.1",  y: 24 },{ label: "Sprint 2022.2",  y: 10 },{ label: "Sprint 2022.3",  y: 17 },{ label: "Sprint 2022.4",  y: 15 },{ label: "Sprint 2022.5",  y: 7 },{ label: "Sprint 2022.6",  y: 14 },
+                        { label: "Sprint 2022.2",  y: 10 },{ label: "Sprint 2022.3",  y: 17 },{ label: "Sprint 2022.4",  y: 15 },{ label: "Sprint 2022.5",  y: 7 },{ label: "Sprint 2022.6",  y: 14 },
                     ]
                 },
                 {
@@ -203,7 +211,7 @@
                     yValueFormatString: "#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Sprint 2022.1",  y: 24.0 },{ label: "Sprint 2022.2",  y: 17.0 },{ label: "Sprint 2022.3",  y: 11.333333333333334 },{ label: "Sprint 2022.4",  y: 6.583333333333334 },{ label: "Sprint 2022.5",  y: 2.716666666666667 },{ label: "Sprint 2022.6",  y: 2.7861111111111114 },
+                        { label: "Sprint 2022.2",  y: 10.0 },{ label: "Sprint 2022.3",  y: 13.5 },{ label: "Sprint 2022.4",  y: 9.5 },{ label: "Sprint 2022.5",  y: 4.125 },{ label: "Sprint 2022.6",  y: 3.625 },
                     ]
                 }]
             });
@@ -243,7 +251,7 @@
                         yValueFormatString: "#.# %",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 0.15 },{ label: "Sprint 2022.2",  y: 0.15 },{ label: "Sprint 2022.3",  y: 0.15 },{ label: "Sprint 2022.4",  y: 0.15 },{ label: "Sprint 2022.5",  y: 0.15 },{ label: "Sprint 2022.6",  y: 0.15 },
+                            { label: "Sprint 2022.2",  y: 0.15 },{ label: "Sprint 2022.3",  y: 0.15 },{ label: "Sprint 2022.4",  y: 0.15 },{ label: "Sprint 2022.5",  y: 0.15 },{ label: "Sprint 2022.6",  y: 0.15 },
                         ]
                     },
                     {
@@ -256,7 +264,7 @@
                         yValueFormatString: "#.# %",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 0.0 },{ label: "Sprint 2022.2",  y: 0.0 },{ label: "Sprint 2022.3",  y: 0.18789965568125921 },{ label: "Sprint 2022.4",  y: 0.4360649097491204 },{ label: "Sprint 2022.5",  y: 0.03728813559322034 },{ label: "Sprint 2022.6",  y: 0.25865580448065173 },
+                            { label: "Sprint 2022.2",  y: 0.0 },{ label: "Sprint 2022.3",  y: 0.18789965568125921 },{ label: "Sprint 2022.4",  y: 0.4360649097491204 },{ label: "Sprint 2022.5",  y: 0.03728813559322034 },{ label: "Sprint 2022.6",  y: 0.25865580448065173 },
                         ]
                     }
                 ]
@@ -267,6 +275,7 @@
         function loadHoursPerSprint() {
             var hoursPerSprintChartOptions = 
             {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
                 colorSet: "hoursShades",
                 exportEnabled: true,
                 animationEnabled: true,
@@ -297,7 +306,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 0 },{ label: "Sprint 2022.2",  y: 0 },{ label: "Sprint 2022.3",  y: 19.1 },{ label: "Sprint 2022.4",  y: 57.41666666666667 },{ label: "Sprint 2022.5",  y: 5.5 },{ label: "Sprint 2022.6",  y: 31.75 },
+                            { label: "Sprint 2022.2",  y: 0 },{ label: "Sprint 2022.3",  y: 19.1 },{ label: "Sprint 2022.4",  y: 57.41666666666667 },{ label: "Sprint 2022.5",  y: 5.5 },{ label: "Sprint 2022.6",  y: 31.75 },
                         ]
                     },
                     {
@@ -310,7 +319,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 127.05 },{ label: "Sprint 2022.2",  y: 131.43 },{ label: "Sprint 2022.3",  y: 120.75 },{ label: "Sprint 2022.4",  y: 189.08666666666664 },{ label: "Sprint 2022.5",  y: 153.0 },{ label: "Sprint 2022.6",  y: 154.5 },
+                            { label: "Sprint 2022.2",  y: 131.43 },{ label: "Sprint 2022.3",  y: 120.75 },{ label: "Sprint 2022.4",  y: 189.08666666666664 },{ label: "Sprint 2022.5",  y: 153.0 },{ label: "Sprint 2022.6",  y: 154.5 },
                         ]
                     },
                     {
@@ -322,7 +331,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 139.55 },{ label: "Sprint 2022.2",  y: 141.93 },{ label: "Sprint 2022.3",  y: 128.25 },{ label: "Sprint 2022.4",  y: 202.08666666666664 },{ label: "Sprint 2022.5",  y: 175.0 },{ label: "Sprint 2022.6",  y: 179.67000000000002 },
+                            { label: "Sprint 2022.2",  y: 141.93 },{ label: "Sprint 2022.3",  y: 128.25 },{ label: "Sprint 2022.4",  y: 202.08666666666664 },{ label: "Sprint 2022.5",  y: 175.0 },{ label: "Sprint 2022.6",  y: 179.67000000000002 },
                         ]
                     },
                     {
@@ -334,31 +343,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.1",  y: 155.0 },{ label: "Sprint 2022.2",  y: 154.0 },{ label: "Sprint 2022.3",  y: 153.25 },{ label: "Sprint 2022.4",  y: 205.83666666666664 },{ label: "Sprint 2022.5",  y: 196.0 },{ label: "Sprint 2022.6",  y: 195.17000000000002 },
-                        ]
-                    },
-                    {
-                        type: "column",
-                        name: "Capacity Burn",
-                        showInLegend: true,
-                        indexLabelFontSize: 12,
-                        indexLabelPlacement: 'outside',
-                        yValueFormatString: "#,##0.## h",
-                        indexLabel: "{y}",
-                        dataPoints: [
-                            { label: "Sprint 2022.1",  y: 76.25 },{ label: "Sprint 2022.2",  y: 76.25 },{ label: "Sprint 2022.3",  y: 60.0 },{ label: "Sprint 2022.4",  y: 76.25 },{ label: "Sprint 2022.5",  y: 76.25 },{ label: "Sprint 2022.6",  y: 76.25 },
-                        ]
-                    },
-                    {
-                        type: "column",
-                        name: "Capacity All Work",
-                        showInLegend: true,
-                        indexLabelFontSize: 12,
-                        indexLabelPlacement: 'outside',
-                        yValueFormatString: "#,##0.## h",
-                        indexLabel: "{y}",
-                        dataPoints: [
-                            { label: "Sprint 2022.1",  y: 216 },{ label: "Sprint 2022.2",  y: 216 },{ label: "Sprint 2022.3",  y: 192 },{ label: "Sprint 2022.4",  y: 216 },{ label: "Sprint 2022.5",  y: 216 },{ label: "Sprint 2022.6",  y: 216 },
+                            { label: "Sprint 2022.2",  y: 154.0 },{ label: "Sprint 2022.3",  y: 153.25 },{ label: "Sprint 2022.4",  y: 205.83666666666664 },{ label: "Sprint 2022.5",  y: 196.0 },{ label: "Sprint 2022.6",  y: 195.17000000000002 },
                         ]
                     }
                 ]
@@ -369,6 +354,7 @@
         function loadHours() {
             var hoursChartOptions = 
             {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
                 colorSet: "hoursShades",
                 exportEnabled: true,
                 animationEnabled: true,
@@ -431,12 +417,64 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Imp",  y: 67.5 },{ label: "Test",  y: 11.166666666666666 },{ label: "Value Activation",  y: 9.5 },{ label: "Requirement",  y: 9.5 },{ label: "Overhead CI&T",  y: 6.0 },{ label: "Daily and Alignments",  y: 36.66666666666667 },{ label: "Rituals",  y: 15.666666666666666 },{ label: "Story",  y: 7.416666666666667 },{ label: "Bug",  y: 31.75 },
+                            { label: "Imp",  y: 67.5 },{ label: "Test",  y: 11.17 },{ label: "Value Activation",  y: 9.5 },{ label: "Requirement",  y: 9.5 },{ label: "Overhead CI&T",  y: 6.0 },{ label: "Daily and Alignments",  y: 36.67 },{ label: "Rituals",  y: 15.67 },{ label: "Story",  y: 7.42 },{ label: "Bug",  y: 31.75 },
                         ]
                     }
                 ]
             }
             var chart = new CanvasJS.Chart("chartHoursPerType", hoursPerTypeChartOptions);
+            chart.render();
+        }
+        function loadCapacityHoursPerSprint() {
+            var capacityHoursPerSprintChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Capacity Hours x Executed Hours Per Sprint"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Capacity",
+                        showInLegend: true,      
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSlateBlue',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Daily",  y: 10.0 },{ label: "Refinement",  y: 30.0 },{ label: "Rituals",  y: 10.0 },{ label: "Burn",  y: 76.25 },{ label: "All",  y: 216 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed",
+                        showInLegend: true,
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSeaGreen',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Daily",  y: 36.66666666666667 },{ label: "Refinement",  y: 9.5 },{ label: "Rituals",  y: 15.666666666666666 },{ label: "Burn",  y: 133.33333333333331 },{ label: "All",  y: 195.16666666666669 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartCapacityHoursPerSprint", capacityHoursPerSprintChartOptions);
             chart.render();
         }
         
@@ -453,7 +491,7 @@
 <footer><br/> <br/>
     <div class="content">
         <p>
-            created at 2022-06-15 17:36:05.373899
+            created at 2022-06-16 12:33:40.583154
         </p>
     </div>
 </footer>

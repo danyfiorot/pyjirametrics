@@ -46,6 +46,13 @@
         <tr>
             <td>
                 <br/><br/>
+                <div id="chartCapacityHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
                 <div id="chartHours" style="width:100%;height:400px;max-width:1200px"></div>
                 <br/><br/>
             </td>
@@ -69,10 +76,11 @@
                 "#EADB9A"                
                 ]);
 
-            loadRework();
             loadVelocity();
             loadThroughput();
+            loadRework();
             loadHoursPerSprint();
+            loadCapacityHoursPerSprint();
             loadHours();
             loadHoursPerType();
         }
@@ -107,7 +115,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 117 },{ label: "Sprint 2022.4",  y: 246 },{ label: "Sprint 2022.5",  y: 155 },{ label: "Sprint 2022.6",  y: 106 },{ label: "Sprint 2022.7",  y: 102 },{ label: "Sprint 2022.8",  y: 100 },
+                            { label: "Sprint 2022.4",  y: 246 },{ label: "Sprint 2022.5",  y: 155 },{ label: "Sprint 2022.6",  y: 106 },{ label: "Sprint 2022.7",  y: 102 },{ label: "Sprint 2022.8",  y: 100 },
                         ]
                     },
                     {
@@ -120,7 +128,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 13 },{ label: "Sprint 2022.4",  y: 75 },{ label: "Sprint 2022.5",  y: 64 },{ label: "Sprint 2022.6",  y: 50 },{ label: "Sprint 2022.7",  y: 69 },{ label: "Sprint 2022.8",  y: 58 },
+                            { label: "Sprint 2022.4",  y: 75 },{ label: "Sprint 2022.5",  y: 64 },{ label: "Sprint 2022.6",  y: 50 },{ label: "Sprint 2022.7",  y: 69 },{ label: "Sprint 2022.8",  y: 58 },
                         ]
                     },
                     {
@@ -137,7 +145,7 @@
                         yValueFormatString: "#,##0.# SPs",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 13.0 },{ label: "Sprint 2022.4",  y: 44.0 },{ label: "Sprint 2022.5",  y: 36.0 },{ label: "Sprint 2022.6",  y: 21.5 },{ label: "Sprint 2022.7",  y: 18.1 },{ label: "Sprint 2022.8",  y: 12.683333333333332 },
+                            { label: "Sprint 2022.4",  y: 75.0 },{ label: "Sprint 2022.5",  y: 69.5 },{ label: "Sprint 2022.6",  y: 39.833333333333336 },{ label: "Sprint 2022.7",  y: 27.208333333333336 },{ label: "Sprint 2022.8",  y: 17.041666666666668 },
                         ]
                     }
                 ]
@@ -173,7 +181,7 @@
                     yValueFormatString: "#,##0.#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Sprint 2022.3",  y: 9 },{ label: "Sprint 2022.4",  y: 23 },{ label: "Sprint 2022.5",  y: 14 },{ label: "Sprint 2022.6",  y: 12 },{ label: "Sprint 2022.7",  y: 21 },{ label: "Sprint 2022.8",  y: 17 },
+                        { label: "Sprint 2022.4",  y: 23 },{ label: "Sprint 2022.5",  y: 14 },{ label: "Sprint 2022.6",  y: 12 },{ label: "Sprint 2022.7",  y: 21 },{ label: "Sprint 2022.8",  y: 17 },
                     ]
                 },
                 {
@@ -186,7 +194,7 @@
                     yValueFormatString: "#,##0.#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Sprint 2022.3",  y: 1 },{ label: "Sprint 2022.4",  y: 6 },{ label: "Sprint 2022.5",  y: 7 },{ label: "Sprint 2022.6",  y: 7 },{ label: "Sprint 2022.7",  y: 14 },{ label: "Sprint 2022.8",  y: 10 },
+                        { label: "Sprint 2022.4",  y: 6 },{ label: "Sprint 2022.5",  y: 7 },{ label: "Sprint 2022.6",  y: 7 },{ label: "Sprint 2022.7",  y: 14 },{ label: "Sprint 2022.8",  y: 10 },
                     ]
                 },
                 {
@@ -203,7 +211,7 @@
                     yValueFormatString: "#",
                     indexLabel: "{y}",
                     dataPoints: [
-                        { label: "Sprint 2022.3",  y: 1.0 },{ label: "Sprint 2022.4",  y: 3.5 },{ label: "Sprint 2022.5",  y: 3.5 },{ label: "Sprint 2022.6",  y: 2.625 },{ label: "Sprint 2022.7",  y: 3.325 },{ label: "Sprint 2022.8",  y: 2.220833333333333 },
+                        { label: "Sprint 2022.4",  y: 6.0 },{ label: "Sprint 2022.5",  y: 6.5 },{ label: "Sprint 2022.6",  y: 4.5 },{ label: "Sprint 2022.7",  y: 4.625 },{ label: "Sprint 2022.8",  y: 2.925 },
                     ]
                 }]
             });
@@ -243,7 +251,7 @@
                         yValueFormatString: "#.# %",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 0.15 },{ label: "Sprint 2022.4",  y: 0.15 },{ label: "Sprint 2022.5",  y: 0.15 },{ label: "Sprint 2022.6",  y: 0.15 },{ label: "Sprint 2022.7",  y: 0.15 },{ label: "Sprint 2022.8",  y: 0.15 },
+                            { label: "Sprint 2022.4",  y: 0.15 },{ label: "Sprint 2022.5",  y: 0.15 },{ label: "Sprint 2022.6",  y: 0.15 },{ label: "Sprint 2022.7",  y: 0.15 },{ label: "Sprint 2022.8",  y: 0.15 },
                         ]
                     },
                     {
@@ -256,7 +264,7 @@
                         yValueFormatString: "#.# %",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 0.2604166666666667 },{ label: "Sprint 2022.4",  y: 0.011267605633802818 },{ label: "Sprint 2022.5",  y: 0.010498687664041995 },{ label: "Sprint 2022.6",  y: 0.169407300325262 },{ label: "Sprint 2022.7",  y: 0.009909329633850269 },{ label: "Sprint 2022.8",  y: 0.005494505494505495 },
+                            { label: "Sprint 2022.4",  y: 0.011267605633802818 },{ label: "Sprint 2022.5",  y: 0.010498687664041995 },{ label: "Sprint 2022.6",  y: 0.169407300325262 },{ label: "Sprint 2022.7",  y: 0.009909329633850269 },{ label: "Sprint 2022.8",  y: 0.005494505494505495 },
                         ]
                     }
                 ]
@@ -267,6 +275,7 @@
         function loadHoursPerSprint() {
             var hoursPerSprintChartOptions = 
             {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
                 colorSet: "hoursShades",
                 exportEnabled: true,
                 animationEnabled: true,
@@ -297,7 +306,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 6.25 },{ label: "Sprint 2022.4",  y: 2.0 },{ label: "Sprint 2022.5",  y: 2.0 },{ label: "Sprint 2022.6",  y: 37.5 },{ label: "Sprint 2022.7",  y: 2.0 },{ label: "Sprint 2022.8",  y: 1.0 },
+                            { label: "Sprint 2022.4",  y: 2.0 },{ label: "Sprint 2022.5",  y: 2.0 },{ label: "Sprint 2022.6",  y: 37.5 },{ label: "Sprint 2022.7",  y: 2.0 },{ label: "Sprint 2022.8",  y: 1.0 },
                         ]
                     },
                     {
@@ -310,7 +319,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 30.25 },{ label: "Sprint 2022.4",  y: 179.5 },{ label: "Sprint 2022.5",  y: 192.5 },{ label: "Sprint 2022.6",  y: 258.86 },{ label: "Sprint 2022.7",  y: 203.83 },{ label: "Sprint 2022.8",  y: 183.0 },
+                            { label: "Sprint 2022.4",  y: 179.5 },{ label: "Sprint 2022.5",  y: 192.5 },{ label: "Sprint 2022.6",  y: 258.86 },{ label: "Sprint 2022.7",  y: 203.83 },{ label: "Sprint 2022.8",  y: 183.0 },
                         ]
                     },
                     {
@@ -322,7 +331,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 44.25 },{ label: "Sprint 2022.4",  y: 223.75 },{ label: "Sprint 2022.5",  y: 228.03 },{ label: "Sprint 2022.6",  y: 295.86 },{ label: "Sprint 2022.7",  y: 247.33 },{ label: "Sprint 2022.8",  y: 207.0 },
+                            { label: "Sprint 2022.4",  y: 223.75 },{ label: "Sprint 2022.5",  y: 228.03 },{ label: "Sprint 2022.6",  y: 295.86 },{ label: "Sprint 2022.7",  y: 247.33 },{ label: "Sprint 2022.8",  y: 207.0 },
                         ]
                     },
                     {
@@ -334,31 +343,7 @@
                         yValueFormatString: "#,##0.## h",
                         indexLabel: "{y}",
                         dataPoints: [
-                            { label: "Sprint 2022.3",  y: 44.25 },{ label: "Sprint 2022.4",  y: 223.75 },{ label: "Sprint 2022.5",  y: 228.03 },{ label: "Sprint 2022.6",  y: 295.86 },{ label: "Sprint 2022.7",  y: 247.33 },{ label: "Sprint 2022.8",  y: 207.0 },
-                        ]
-                    },
-                    {
-                        type: "column",
-                        name: "Capacity Burn",
-                        showInLegend: true,
-                        indexLabelFontSize: 12,
-                        indexLabelPlacement: 'outside',
-                        yValueFormatString: "#,##0.## h",
-                        indexLabel: "{y}",
-                        dataPoints: [
-                            { label: "Sprint 2022.3",  y: 68.625 },{ label: "Sprint 2022.4",  y: 99.125 },{ label: "Sprint 2022.5",  y: 102.0 },{ label: "Sprint 2022.6",  y: 129.625 },{ label: "Sprint 2022.7",  y: 129.625 },{ label: "Sprint 2022.8",  y: 122.0 },
-                        ]
-                    },
-                    {
-                        type: "column",
-                        name: "Capacity All Work",
-                        showInLegend: true,
-                        indexLabelFontSize: 12,
-                        indexLabelPlacement: 'outside',
-                        yValueFormatString: "#,##0.## h",
-                        indexLabel: "{y}",
-                        dataPoints: [
-                            { label: "Sprint 2022.3",  y: 360 },{ label: "Sprint 2022.4",  y: 432 },{ label: "Sprint 2022.5",  y: 512 },{ label: "Sprint 2022.6",  y: 576 },{ label: "Sprint 2022.7",  y: 504 },{ label: "Sprint 2022.8",  y: 432 },
+                            { label: "Sprint 2022.4",  y: 223.75 },{ label: "Sprint 2022.5",  y: 228.03 },{ label: "Sprint 2022.6",  y: 295.86 },{ label: "Sprint 2022.7",  y: 247.33 },{ label: "Sprint 2022.8",  y: 207.0 },
                         ]
                     }
                 ]
@@ -369,6 +354,7 @@
         function loadHours() {
             var hoursChartOptions = 
             {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
                 colorSet: "hoursShades",
                 exportEnabled: true,
                 animationEnabled: true,
@@ -439,6 +425,58 @@
             var chart = new CanvasJS.Chart("chartHoursPerType", hoursPerTypeChartOptions);
             chart.render();
         }
+        function loadCapacityHoursPerSprint() {
+            var capacityHoursPerSprintChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Capacity Hours x Executed Hours Per Sprint"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Capacity",
+                        showInLegend: true,      
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSlateBlue',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Daily",  y: 16.0 },{ label: "Refinement",  y: 48.0 },{ label: "Rituals",  y: 16.0 },{ label: "Burn",  y: 122.0 },{ label: "All",  y: 432 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed",
+                        showInLegend: true,
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSeaGreen',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Daily",  y: 26.5 },{ label: "Refinement",  y: 16.5 },{ label: "Rituals",  y: 7.5 },{ label: "Burn",  y: 156.5 },{ label: "All",  y: 207.0 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartCapacityHoursPerSprint", capacityHoursPerSprintChartOptions);
+            chart.render();
+        }
         
         function toggleDataSeries(e) {
             if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
@@ -453,7 +491,7 @@
 <footer><br/> <br/>
     <div class="content">
         <p>
-            created at 2022-06-15 17:12:48.957845
+            created at 2022-06-16 12:12:35.982700
         </p>
     </div>
 </footer>
