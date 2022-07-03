@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html class="theme-light">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>DataScience - charts Charts</title>
+    <link rel="icon" sizes="32x32" href="favicon_32.png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body class="indexfile">
+<header>
+    <div class="content w3-bottombar w3-border-red w3-codespan">
+        <h1><img src="favicon_32.png" />   DataScience - charts Charts</h1>
+    </div>
+</header>
+<main id="charts">
+    <br/>
+    <table style="width:98%;">
+        <tr>
+            <td>
+                <div id="chartVelocity" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartThroughput" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartRework" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartCapacityHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHours" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHoursPerType" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+    </table>
+    <script>
+        window.onload = function () {
+            CanvasJS.addColorSet("hoursShades",
+                ["#FF7F7F",
+                "#7FFF8E",
+                "#7FC9FF",
+                "#FFE97F",
+                "#72AD78",
+                "#EADB9A"                
+                ]);
+
+            CanvasJS.addColorSet("hoursShades2",
+            ["#6D78AD",
+            "#51CDA0"
+            ]);
+
+            loadVelocity();
+            loadThroughput();
+            loadRework();
+            loadHoursPerSprint();
+            loadCapacityHoursPerSprint();
+            loadHours();
+            loadHoursPerType();
+        }
+        function loadVelocity() {
+            var velocityChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Agile Velocity (SPs)"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Expected",
+                        showInLegend: true,      
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSlateBlue',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.# SPs",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 86 },
+                            { label: "Sprint 8",  y: 102 },
+                            { label: "Sprint 9",  y: 66 },
+                            { label: "Cycle 5",  y: 79 },
+                            { label: "Cycle 6",  y: 426 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Reached",
+                        showInLegend: true,
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSeaGreen',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.# SPs",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 5 },
+                            { label: "Sprint 8",  y: 18 },
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 138 },
+                            { label: "Cycle 6",  y: 27 },
+                        ]
+                    },
+                    {
+                        type: "line",
+                        name: "Trend",
+                        showInLegend: true,
+                        indexLabelFontSize: 8,
+                        indexLabelTextAlign: 'left',
+                        indexLabelFontWeight: 'bold',
+                        indexLabelFontColor: 'black',
+                        indexLabelPlacement: 'inside',
+                        lineDashType: "dash",
+                        lineThickness: 3,
+                        yValueFormatString: "#,##0.# SPs",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 5.0 },
+                            { label: "Sprint 8",  y: 11.5 },
+                            { label: "Sprint 9",  y: 7.666666666666667 },
+                            { label: "Cycle 5",  y: 40.25 },
+                            { label: "Cycle 6",  y: 37.6 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartVelocity", velocityChartOptions);
+            chart.render();
+        }
+        function loadThroughput() {
+            var chart2 = new CanvasJS.Chart("chartThroughput", {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Throughput (Work Items)"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: [{
+                    type: "column",
+                    name: "Expected",
+                    showInLegend: true,      
+                    indexLabelFontSize: 20,
+                    indexLabelFontColor: 'MediumSlateBlue',
+                    indexLabelPlacement: 'outside',    
+                    yValueFormatString: "#,##0.#",
+                    indexLabel: "{y}",
+                    dataPoints: [
+                            { label: "Sprint 7",  y: 6 },
+                            { label: "Sprint 8",  y: 6 },
+                            { label: "Sprint 9",  y: 4 },
+                            { label: "Cycle 5",  y: 14 },
+                            { label: "Cycle 6",  y: 11 },
+                    ]
+                },
+                {
+                    type: "column",
+                    name: "Reached",
+                    showInLegend: true,
+                    indexLabelFontSize: 20,
+                    indexLabelFontColor: 'MediumSeaGreen',
+                    indexLabelPlacement: 'outside',
+                    yValueFormatString: "#,##0.#",
+                    indexLabel: "{y}",
+                    dataPoints: [
+                            { label: "Sprint 7",  y: 1 },
+                            { label: "Sprint 8",  y: 2 },
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 20 },
+                            { label: "Cycle 6",  y: 3 },
+                    ]
+                },
+                {
+                    type: "line",
+                    name: "Trend",
+                    showInLegend: true,
+                    indexLabelFontSize: 20,
+                    indexLabelTextAlign: 'left',
+                    indexLabelFontWeight: 'bold',
+                    indexLabelFontColor: 'DarkSalmon',
+                    indexLabelPlacement: 'inside',
+                    lineDashType: "dash",
+                    lineThickness: 3,
+                    yValueFormatString: "#",
+                    indexLabel: "{y}",
+                    dataPoints: [
+                            { label: "Sprint 7",  y: 1.0 },
+                            { label: "Sprint 8",  y: 1.5 },
+                            { label: "Sprint 9",  y: 1.0 },
+                            { label: "Cycle 5",  y: 5.75 },
+                            { label: "Cycle 6",  y: 5.2 },
+                    ]
+                }]
+            });
+            chart2.render();
+        }
+        function loadRework() {
+            var reworkChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Rework (%)"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                axisY:{    
+                    valueFormatString:  "#.# %"
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Expected",
+                        showInLegend: true,      
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'BlueViolet',
+                        indexLabelPlacement: 'outside',     
+                        yValueFormatString: "#.# %",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 0.15 },
+                            { label: "Sprint 8",  y: 0.15 },
+                            { label: "Sprint 9",  y: 0.15 },
+                            { label: "Cycle 5",  y: 0.15 },
+                            { label: "Cycle 6",  y: 0.15 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Reached",
+                        showInLegend: true,
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSeaGreen',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#.# %",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 0.0 },
+                            { label: "Sprint 8",  y: 0.0 },
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 0.0 },
+                            { label: "Cycle 6",  y: 0.0 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartRework", reworkChartOptions);
+            chart.render();
+        }
+        function loadHoursPerSprint() {
+            var hoursPerSprintChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                colorSet: "hoursShades",
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Per Sprint"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                axisY:{    
+                    valueFormatString:  "#.# h"
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Rework",
+                        showInLegend: true,      
+                        indexLabelFontSize: 12,
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 0 },
+                            { label: "Sprint 8",  y: 0 },
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 0 },
+                            { label: "Cycle 6",  y: 0 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Burn",
+                        showInLegend: true,
+                        indexLabelFontSize: 12,
+                        indexLabelFontWeight: 'bold',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 17.0 },
+                            { label: "Sprint 8",  y: 1.5 },
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 214.77 },
+                            { label: "Cycle 6",  y: 498.72 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Build",
+                        showInLegend: true,      
+                        indexLabelFontSize: 12,
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 23.0 },
+                            { label: "Sprint 8",  y: 1.5 },
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 224.47 },
+                            { label: "Cycle 6",  y: 521.97 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "All Work",
+                        showInLegend: true,
+                        indexLabelFontSize: 12,
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 7",  y: 23.0 },
+                            { label: "Sprint 8",  y: 1.5 },
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 224.47 },
+                            { label: "Cycle 6",  y: 526.97 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHoursPerSprint", hoursPerSprintChartOptions);
+            chart.render();
+        }
+        function loadHours() {
+            var hoursChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                colorSet: "hoursShades",
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Last Sprint (h) - [DataScience-NBA] Cycle 6"
+                }, 
+                toolTip: {
+                    shared: true
+                },
+                axisY:{    
+                    valueFormatString:  "#.## h"
+                },
+                data: 
+                [
+                    {
+                        type: "doughnut",
+		                startAngle: 60,
+                        innerRadius: 60,
+                        indexLabelFontSize: 17,
+		                toolTipContent: "<b>{label}:</b> {y}h",
+                        indexLabel: "{label}: {y}h (#percent%)",
+                        dataPoints: [
+                            { label: "Rework",  y: 0 },
+                            { label: "Burn", y: 498.72 },
+                            { label: "Build", y: 521.97 },
+                            { label: "All Work",  y: 526.97 }
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHours", hoursChartOptions);
+            chart.render();
+        }
+        function loadHoursPerType() {
+            var hoursPerTypeChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Per Type - [DataScience-NBA] Cycle 6"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Hours",
+                        showInLegend: false,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Imp",  y: 221.83 },
+                            { label: "Action Plan",  y: 5.25 },
+                            { label: "Env",  y: 89.25 },
+                            { label: "Daily and Alignments",  y: 100.52 },
+                            { label: "Rituals",  y: 18.0 },
+                            { label: "Training",  y: 18.7 },
+                            { label: "Overhead CI&T",  y: 32.17 },
+                            { label: "Change Request",  y: 5.0 },
+                            { label: "Test",  y: 24.75 },
+                            { label: "Non Functional Task",  y: 6.5 },
+                            { label: "Value Activation",  y: 5.0 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHoursPerType", hoursPerTypeChartOptions);
+            chart.render();
+        }
+        function loadCapacityHoursPerSprint() {
+            var capacityHoursPerSprintChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                // colorSet: "hoursShades2",
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Capacity Hours x Executed Hours Per Sprint"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Capacity Daily",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 100.62500000000001 },
+                            { label: "Cycle 5",  y: 50.599999999999994 },
+                            { label: "Cycle 6",  y: 65.8 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed Daily",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 36.0 },
+                            { label: "Cycle 6",  y: 100.51666666666667 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Capacity Refinement",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 104.99999999999997 },
+                            { label: "Cycle 5",  y: 104.99999999999997 },
+                            { label: "Cycle 6",  y: 104.99999999999997 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed Refinement",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 2.0 },
+                            { label: "Cycle 6",  y: 0 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Capacity Rituals",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 104.99999999999997 },
+                            { label: "Cycle 5",  y: 104.99999999999997 },
+                            { label: "Cycle 6",  y: 104.99999999999997 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed Rituals",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 3.2 },
+                            { label: "Cycle 6",  y: 18.0 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Capacity Burn",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 721.875 },
+                            { label: "Cycle 5",  y: -28.499999999999996 },
+                            { label: "Cycle 6",  y: 199.5 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed Burn",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 183.26666666666668 },
+                            { label: "Cycle 6",  y: 408.45 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Capacity All",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 1200 },
+                            { label: "Cycle 5",  y: 288 },
+                            { label: "Cycle 6",  y: 560 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed All",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 9",  y: 0 },
+                            { label: "Cycle 5",  y: 224.4666666666667 },
+                            { label: "Cycle 6",  y: 526.9666666666667 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartCapacityHoursPerSprint", capacityHoursPerSprintChartOptions);
+            chart.render();
+        }
+        
+        function toggleDataSeries(e) {
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            e.chart.render();
+        }
+        </script>
+</main>
+<footer><br/> <br/>
+    <div class="content">
+        <p>
+            created at 2022-07-03 19:22:03.100241
+        </p>
+    </div>
+</footer>
+</body>
+</html>

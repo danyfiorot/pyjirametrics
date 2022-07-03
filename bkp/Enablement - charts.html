@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html class="theme-light">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Enablement - charts Charts</title>
+    <link rel="icon" sizes="32x32" href="favicon_32.png">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body class="indexfile">
+<header>
+    <div class="content w3-bottombar w3-border-red w3-codespan">
+        <h1><img src="favicon_32.png" />   Enablement - charts Charts</h1>
+    </div>
+</header>
+<main id="charts">
+    <br/>
+    <table style="width:98%;">
+        <tr>
+            <td>
+                <div id="chartVelocity" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartThroughput" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartRework" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartCapacityHoursPerSprint" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHours" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/>
+                <div id="chartHoursPerType" style="width:100%;height:400px;max-width:1500px"></div>
+                <br/><br/>
+            </td>
+        </tr>
+    </table>
+    <script>
+        window.onload = function () {
+            CanvasJS.addColorSet("hoursShades",
+                ["#FF7F7F",
+                "#7FFF8E",
+                "#7FC9FF",
+                "#FFE97F",
+                "#72AD78",
+                "#EADB9A"                
+                ]);
+
+            CanvasJS.addColorSet("hoursShades2",
+            ["#6D78AD",
+            "#51CDA0"
+            ]);
+
+            loadVelocity();
+            loadThroughput();
+            loadRework();
+            loadHoursPerSprint();
+            loadCapacityHoursPerSprint();
+            loadHours();
+            loadHoursPerType();
+        }
+        function loadVelocity() {
+            var velocityChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Agile Velocity (SPs)"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Expected",
+                        showInLegend: true,      
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSlateBlue',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.# SPs",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 23 },
+                            { label: "Sprint 2022.6",  y: 82 },
+                            { label: "Sprint 2022.7",  y: 90 },
+                            { label: "Sprint 2022.8",  y: 87 },
+                            { label: "Sprint 2022.9",  y: 33 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Reached",
+                        showInLegend: true,
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSeaGreen',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.# SPs",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 64 },
+                            { label: "Sprint 2022.6",  y: 50 },
+                            { label: "Sprint 2022.7",  y: 69 },
+                            { label: "Sprint 2022.8",  y: 58 },
+                            { label: "Sprint 2022.9",  y: 48 },
+                        ]
+                    },
+                    {
+                        type: "line",
+                        name: "Trend",
+                        showInLegend: true,
+                        indexLabelFontSize: 8,
+                        indexLabelTextAlign: 'left',
+                        indexLabelFontWeight: 'bold',
+                        indexLabelFontColor: 'black',
+                        indexLabelPlacement: 'inside',
+                        lineDashType: "dash",
+                        lineThickness: 3,
+                        yValueFormatString: "#,##0.# SPs",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 64.0 },
+                            { label: "Sprint 2022.6",  y: 57.0 },
+                            { label: "Sprint 2022.7",  y: 61.0 },
+                            { label: "Sprint 2022.8",  y: 60.25 },
+                            { label: "Sprint 2022.9",  y: 57.8 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartVelocity", velocityChartOptions);
+            chart.render();
+        }
+        function loadThroughput() {
+            var chart2 = new CanvasJS.Chart("chartThroughput", {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Throughput (Work Items)"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: [{
+                    type: "column",
+                    name: "Expected",
+                    showInLegend: true,      
+                    indexLabelFontSize: 20,
+                    indexLabelFontColor: 'MediumSlateBlue',
+                    indexLabelPlacement: 'outside',    
+                    yValueFormatString: "#,##0.#",
+                    indexLabel: "{y}",
+                    dataPoints: [
+                            { label: "Sprint 2022.5",  y: 2 },
+                            { label: "Sprint 2022.6",  y: 10 },
+                            { label: "Sprint 2022.7",  y: 18 },
+                            { label: "Sprint 2022.8",  y: 14 },
+                            { label: "Sprint 2022.9",  y: 7 },
+                    ]
+                },
+                {
+                    type: "column",
+                    name: "Reached",
+                    showInLegend: true,
+                    indexLabelFontSize: 20,
+                    indexLabelFontColor: 'MediumSeaGreen',
+                    indexLabelPlacement: 'outside',
+                    yValueFormatString: "#,##0.#",
+                    indexLabel: "{y}",
+                    dataPoints: [
+                            { label: "Sprint 2022.5",  y: 7 },
+                            { label: "Sprint 2022.6",  y: 7 },
+                            { label: "Sprint 2022.7",  y: 14 },
+                            { label: "Sprint 2022.8",  y: 10 },
+                            { label: "Sprint 2022.9",  y: 11 },
+                    ]
+                },
+                {
+                    type: "line",
+                    name: "Trend",
+                    showInLegend: true,
+                    indexLabelFontSize: 20,
+                    indexLabelTextAlign: 'left',
+                    indexLabelFontWeight: 'bold',
+                    indexLabelFontColor: 'DarkSalmon',
+                    indexLabelPlacement: 'inside',
+                    lineDashType: "dash",
+                    lineThickness: 3,
+                    yValueFormatString: "#",
+                    indexLabel: "{y}",
+                    dataPoints: [
+                            { label: "Sprint 2022.5",  y: 7.0 },
+                            { label: "Sprint 2022.6",  y: 7.0 },
+                            { label: "Sprint 2022.7",  y: 9.333333333333334 },
+                            { label: "Sprint 2022.8",  y: 9.5 },
+                            { label: "Sprint 2022.9",  y: 9.8 },
+                    ]
+                }]
+            });
+            chart2.render();
+        }
+        function loadRework() {
+            var reworkChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Rework (%)"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                axisY:{    
+                    valueFormatString:  "#.# %"
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Expected",
+                        showInLegend: true,      
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'BlueViolet',
+                        indexLabelPlacement: 'outside',     
+                        yValueFormatString: "#.# %",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 0.15 },
+                            { label: "Sprint 2022.6",  y: 0.15 },
+                            { label: "Sprint 2022.7",  y: 0.15 },
+                            { label: "Sprint 2022.8",  y: 0.15 },
+                            { label: "Sprint 2022.9",  y: 0.15 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Reached",
+                        showInLegend: true,
+                        indexLabelFontSize: 20,
+                        indexLabelFontColor: 'MediumSeaGreen',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#.# %",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 0.010498687664041995 },
+                            { label: "Sprint 2022.6",  y: 0.169407300325262 },
+                            { label: "Sprint 2022.7",  y: 0.009909329633850269 },
+                            { label: "Sprint 2022.8",  y: 0.005494505494505495 },
+                            { label: "Sprint 2022.9",  y: 0.0 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartRework", reworkChartOptions);
+            chart.render();
+        }
+        function loadHoursPerSprint() {
+            var hoursPerSprintChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                colorSet: "hoursShades",
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Per Sprint"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                axisY:{    
+                    valueFormatString:  "#.# h"
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Rework",
+                        showInLegend: true,      
+                        indexLabelFontSize: 12,
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 2.0 },
+                            { label: "Sprint 2022.6",  y: 37.5 },
+                            { label: "Sprint 2022.7",  y: 2.0 },
+                            { label: "Sprint 2022.8",  y: 1.0 },
+                            { label: "Sprint 2022.9",  y: 0 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Burn",
+                        showInLegend: true,
+                        indexLabelFontSize: 12,
+                        indexLabelFontWeight: 'bold',
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 192.5 },
+                            { label: "Sprint 2022.6",  y: 258.86 },
+                            { label: "Sprint 2022.7",  y: 203.83 },
+                            { label: "Sprint 2022.8",  y: 183.0 },
+                            { label: "Sprint 2022.9",  y: 106.5 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Build",
+                        showInLegend: true,      
+                        indexLabelFontSize: 12,
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 228.03 },
+                            { label: "Sprint 2022.6",  y: 295.86 },
+                            { label: "Sprint 2022.7",  y: 247.33 },
+                            { label: "Sprint 2022.8",  y: 207.0 },
+                            { label: "Sprint 2022.9",  y: 136.5 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "All Work",
+                        showInLegend: true,
+                        indexLabelFontSize: 12,
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.5",  y: 228.03 },
+                            { label: "Sprint 2022.6",  y: 295.86 },
+                            { label: "Sprint 2022.7",  y: 247.33 },
+                            { label: "Sprint 2022.8",  y: 207.0 },
+                            { label: "Sprint 2022.9",  y: 136.5 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHoursPerSprint", hoursPerSprintChartOptions);
+            chart.render();
+        }
+        function loadHours() {
+            var hoursChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                colorSet: "hoursShades",
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Last Sprint (h) - Enablement - Sprint 2022.9"
+                }, 
+                toolTip: {
+                    shared: true
+                },
+                axisY:{    
+                    valueFormatString:  "#.## h"
+                },
+                data: 
+                [
+                    {
+                        type: "doughnut",
+		                startAngle: 60,
+                        innerRadius: 60,
+                        indexLabelFontSize: 17,
+		                toolTipContent: "<b>{label}:</b> {y}h",
+                        indexLabel: "{label}: {y}h (#percent%)",
+                        dataPoints: [
+                            { label: "Rework",  y: 0 },
+                            { label: "Burn", y: 106.5 },
+                            { label: "Build", y: 136.5 },
+                            { label: "All Work",  y: 136.5 }
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHours", hoursChartOptions);
+            chart.render();
+        }
+        function loadHoursPerType() {
+            var hoursPerTypeChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Hours Per Type - Enablement - Sprint 2022.9"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Hours",
+                        showInLegend: false,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Requirement",  y: 10.0 },
+                            { label: "Non Functional Task",  y: 36.0 },
+                            { label: "Daily and Alignments",  y: 13.0 },
+                            { label: "Rituals",  y: 12.5 },
+                            { label: "Tech Solution",  y: 6.5 },
+                            { label: "Imp",  y: 54.0 },
+                            { label: "Env and SCM",  y: 1.0 },
+                            { label: "Story",  y: 3.5 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartHoursPerType", hoursPerTypeChartOptions);
+            chart.render();
+        }
+        function loadCapacityHoursPerSprint() {
+            var capacityHoursPerSprintChartOptions = 
+            {
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                // colorSet: "hoursShades2",
+                exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                    text: "Capacity Hours x Executed Hours Per Sprint"
+                },
+                subtitles: [{
+                    text: "Click Legend to Hide or Unhide Data Series"
+                }], 
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: toggleDataSeries
+                },
+                data: 
+                [
+                    {
+                        type: "column",
+                        name: "Capacity Daily",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 36.125 },
+                            { label: "Sprint 2022.8",  y: 36.0 },
+                            { label: "Sprint 2022.9",  y: 25.5 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed Daily",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 30.5 },
+                            { label: "Sprint 2022.8",  y: 26.5 },
+                            { label: "Sprint 2022.9",  y: 13.0 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Capacity Refinement",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 51.0 },
+                            { label: "Sprint 2022.8",  y: 48.0 },
+                            { label: "Sprint 2022.9",  y: 36 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed Refinement",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 31.5 },
+                            { label: "Sprint 2022.8",  y: 16.5 },
+                            { label: "Sprint 2022.9",  y: 16.5 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Capacity Rituals",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 51.0 },
+                            { label: "Sprint 2022.8",  y: 48.0 },
+                            { label: "Sprint 2022.9",  y: 36 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed Rituals",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 3.5 },
+                            { label: "Sprint 2022.8",  y: 7.5 },
+                            { label: "Sprint 2022.9",  y: 12.5 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Capacity Burn",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 167.875 },
+                            { label: "Sprint 2022.8",  y: 188.0 },
+                            { label: "Sprint 2022.9",  y: 118.5 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed Burn",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 181.83333333333331 },
+                            { label: "Sprint 2022.8",  y: 156.5 },
+                            { label: "Sprint 2022.9",  y: 94.5 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Capacity All",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 504 },
+                            { label: "Sprint 2022.8",  y: 480 },
+                            { label: "Sprint 2022.9",  y: 360 },
+                        ]
+                    },
+                    {
+                        type: "column",
+                        name: "Executed All",
+                        showInLegend: true,      
+                        indexLabelPlacement: 'outside',
+                        yValueFormatString: "#,##0.## h",
+                        indexLabel: "{y}",
+                        dataPoints: [
+                            { label: "Sprint 2022.7",  y: 247.33333333333331 },
+                            { label: "Sprint 2022.8",  y: 207.0 },
+                            { label: "Sprint 2022.9",  y: 136.5 },
+                        ]
+                    }
+                ]
+            }
+            var chart = new CanvasJS.Chart("chartCapacityHoursPerSprint", capacityHoursPerSprintChartOptions);
+            chart.render();
+        }
+        
+        function toggleDataSeries(e) {
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            e.chart.render();
+        }
+        </script>
+</main>
+<footer><br/> <br/>
+    <div class="content">
+        <p>
+            created at 2022-07-01 17:06:05.478483
+        </p>
+    </div>
+</footer>
+</body>
+</html>
